@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Hello World!</h1>
+<h2>Playlists</h2>
+<ul>
+    {% for x in playlists %}
+    <li>{{ x.name }} : {{ x.author }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
