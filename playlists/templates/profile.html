@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        .profile-pic{
+            width: 300px;
+            height: auto;
+        }
+        .playlist-pic{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
 <body>
-    <img src="{{ user.picture }}">
+    <img src="{{ user.picture }}" class="profile-pic">
     <h1>{{ user.name }} </h1>
 
     <h2>Playlists:</h2>
-    <ul>
+    <table>
         {% for x in playlists %}
-        <li><img src="{{ x.picture }}"><a href="{{ x.uri }}">{{ x.name }}</a></li>
+        <td></td><a href="{% url 'playlist' playlist_id=x.uri %}">{{ x.name }}</a><a href="https://open.spotify.com/playlist/{{ x.uri }}?si=80bba40164364365"><img src="{{ x.picture }}" class="playlist-pic"></a></td>
         {% endfor %}
-    </ul>
+    </table>
+
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Submit</button>
+    </form>
 </body>
 </html>

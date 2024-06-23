@@ -10,6 +10,8 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
     uri = models.CharField(max_length=255, primary_key=True)
